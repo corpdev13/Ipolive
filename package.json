@@ -1,19 +1,25 @@
 {
-  "name": "workspace",
+  "name": "ipolive",
   "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {
-    "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
-    "build": "pnpm run typecheck && pnpm -r --if-present run build",
-    "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
-  },
   "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port $PORT",
+    "vercel-build": "vite build"
+  },
   "dependencies": {
-    "@replit/connectors-sdk": "^0.4.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "prettier": "^3.9.4",
+    "vite": "^5.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "tailwindcss": "^3.5.0",
+    "@tailwindcss/typography": "^0.5.8",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0",
     "typescript": "~5.9.3"
   }
 }
